@@ -1,0 +1,29 @@
+<article class="widget container-fluid">
+    <div class="cogs">
+        {% set foo = 180 %}
+        {% for item in post.meta('widget') %}
+            <div class="cog" style="transform: rotate({{ foo }}deg ) translate(0,12.5vw);">
+                <div class="cog__item">
+                    <img src="{{ Image(item.icon).src }}" style="transform: rotate({{ -foo }}deg)" />
+                </div>
+            </div>
+            <div class="cog2" style="transform: rotate({{ foo }}deg ) translate(0,21.5vw);">
+                <p class="cog2__inner" style="transform: translate(0px,35px) rotate({{ -foo }}deg );">{{ item.description }}</p>
+            </div>
+            {% set foo = foo + (360 / post.meta('widget') | length) %}
+        {% endfor %}
+    </div>
+
+    <div class="wheel">
+        <div class="stripe"></div>
+        <div class="ellipse"></div>
+        <div class="wheel__inner">
+            <h3 class="wheel__inner__text">{{ post.meta('widget_center') }}</h3>
+        </div>
+    </div>
+    <div class="big-wheel"></div>
+    <div class="gear-wheel"></div>
+    <div class="grey-wheel"></div>
+    <div class="icon-wheel"></div>
+    <div class="text-wheel"></div>
+</article>
